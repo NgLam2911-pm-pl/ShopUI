@@ -19,7 +19,8 @@ readonly class ShopItemForm extends AsyncForm{
 
 	public function __construct(
 		private ShopItem $shopItem,
-		private Player $player
+		private Player $player,
+		private ?CategoryForm $callback = null
 	){
 		$this->send();
 	}
@@ -43,7 +44,7 @@ readonly class ShopItemForm extends AsyncForm{
 				new Input("amount", "Amount", "123456789")
 			],
 			$onSumbit,
-			null
+			fn($player) => $this->callback?->send()
 		);
 		$this->player->sendForm($form);
 	}

@@ -5,13 +5,14 @@ namespace NgLam2911\ShopUI\forms;
 
 use dktapps\pmforms\MenuForm;
 use dktapps\pmforms\MenuOption;
+use Exception;
 use Generator;
 use NgLam2911\libasyneco\exceptions\EcoException;
 use NgLam2911\ShopUI\elements\Category;
+use NgLam2911\ShopUI\elements\ShopItem;
 use NgLam2911\ShopUI\Loader;
 use NgLam2911\ShopUI\utils\Utils;
 use pocketmine\player\Player;
-use SOFe\AwaitGenerator\Await;
 
 readonly class CategoryForm extends AsyncForm{
 
@@ -45,6 +46,9 @@ readonly class CategoryForm extends AsyncForm{
 		$this->player->sendForm($form);
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function handleSelection(Player $player, int $selectedOption) : void{
 		if ($selectedOption === 0){ //Exit
 			if (!is_null($this->callback)){
@@ -55,6 +59,10 @@ readonly class CategoryForm extends AsyncForm{
 		$element = $this->category->getItems()[$selectedOption - 1];
 		if ($element instanceof Category)
 			new CategoryForm($element, $player, $this);
+		if ($element instanceof ShopItem)
+			new ShopItemForm($element, $player, $this);
+		else
+			throw new Exception("Unknown element type");
 	}
 
 
