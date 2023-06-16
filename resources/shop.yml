@@ -1,0 +1,39 @@
+# ShopUI shop config
+
+- category: "Weapon&Tools"
+  icon: "textures/items/diamond_sword"
+  items:
+    - category: Swords
+      icon: "textures/items/diamond_sword"
+      items:
+        - item: "diamond_sword"
+          buy: 1000
+          sell: 500
+          icon: "textures/items/diamond_sword"
+        - item: "iron_sword"
+          buy: 500
+          sell: 250
+          icon: "textures/items/iron_sword"
+        - item: "stone_sword"
+          buy: 250
+          sell: 125
+          icon: "textures/items/stone_sword"
+    - category: Pickaxes
+      icon: "textures/items/diamond_pickaxe"
+      items:
+        - item: "diamond_pickaxe"
+          buy: 1000
+          sell: 500
+          icon: "textures/items/diamond_pickaxe"
+        - item: "iron_pickaxe"
+          buy: 500
+          sell: 250
+          icon: "textures/items/iron_pickaxe"
+        - item: "stone_pickaxe"
+          buy: 250
+          sell: 125
+          icon: "textures/items/stone_pickaxe"
+- item: "diamond"
+  buy: 1000
+  sell: 500
+  icon: "textures/items/diamond"

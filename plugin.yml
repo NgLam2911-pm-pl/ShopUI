@@ -1,0 +1,20 @@
+name: ShopUI
+main: NgLam2911\ShopUI\Loader
+version: 0.0.1
+api: 4.0.0
+author: NgLam2911
+php: 8.2
+
+softdepend:
+  - EconomyAPI
+  - BedrockEconomy
+
+virions:
+  - pmforms
+  - libasyneco
+  - await-generator
+
+permissions:
+  shopui.command.shop:
+    default: true
+    description: Allow player to use shop command
