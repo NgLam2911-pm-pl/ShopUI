@@ -82,7 +82,7 @@ readonly class ShopItemForm extends AsyncForm{
 				return;
 			}
 			$player->getInventory()->addItem($this->shopItem->getItem()->setCount($amount));
-			$player->sendMessage("You have bought " . $amount . " " . $this->shopItem->getItem()->getName());
+			$player->sendMessage("You have bought x" . $amount . " " . $this->shopItem->getItem()->getName());
 			return;
 		}
 		//Sell
@@ -101,5 +101,6 @@ readonly class ShopItemForm extends AsyncForm{
 		}
 		//Remove item from inventory
 		$inventory->removeItem($this->shopItem->getItem()->setCount($amount));
+		$player->sendMessage("You have sold x" . $amount . " " . $this->shopItem->getItem()->getName());
 	}
 }

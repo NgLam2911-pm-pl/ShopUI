@@ -60,7 +60,7 @@ readonly class CategoryForm extends AsyncForm{
 		$element = $this->category->getItems()[$selectedOption - 1];
 		if ($element instanceof Category)
 			new CategoryForm($element, $player, $this);
-		if ($element instanceof ShopItem)
+		elseif ($element instanceof ShopItem)
 			new ShopItemForm($element, $player, $this);
 		else
 			throw new Exception("Unknown element type");
