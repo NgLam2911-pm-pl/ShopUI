@@ -38,7 +38,7 @@ class Loader extends PluginBase{
 		foreach($configParser->parse() as $element){
 			$this->mainCategory->addItem($element);
 		}
-		$this->ecoProvider = libasyneco::init($this->getConfig()->get("economy-provider")); //TODO: get from config
+		$this->ecoProvider = libasyneco::init(strtolower($this->getConfig()->get("economy-provider"))); //TODO: get from config
 
 		$this->getServer()->getCommandMap()->register("shop", new ShopCommand());
 	}
