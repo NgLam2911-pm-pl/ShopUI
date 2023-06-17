@@ -53,7 +53,7 @@ class ShopConfigParser{
 
 	private function parseShopItem(array $data): ShopItem{
 		if (isset($data["item"], $data["buy_price"], $data["sell_price"], $data["icon"])){
-			throw new InvalidArgumentException("Invalid shop item data at item {$data["name"]}");
+			throw new InvalidArgumentException("Invalid shop item data at item {$data["item"]}");
 		}
 		$item = StringToItemParser::getInstance()->parse($data["item"]);
 		if (is_null($item)){
