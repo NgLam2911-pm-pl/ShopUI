@@ -1,6 +1,6 @@
 # ShopUI config
 
 # Economy Provider: EconomyAPI, BedrockEconomy
-economy-provider: economypapi
+economy-provider: bedrockeconomy
 
 #TODO: Custom messages

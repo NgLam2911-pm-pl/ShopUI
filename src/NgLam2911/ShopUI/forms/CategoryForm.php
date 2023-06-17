@@ -32,7 +32,6 @@ readonly class CategoryForm extends AsyncForm{
 			$this->player->sendMessage("Something went wrong...");
 			return;
 		}
-		$onSumbit = fn(Player $player, int $selectedOption) => $this->handleSelection($player, $selectedOption);
 		$menuOptions = array_map(fn($element) => Utils::parseElement2MenuOption($element), $this->category->getItems());
 		$exitButton = is_null($this->callback)?(new MenuOption("Exit")):(new MenuOption("Back"));
 		$menuOptions = array_merge([$exitButton], $menuOptions);
@@ -40,8 +39,10 @@ readonly class CategoryForm extends AsyncForm{
 			$this->category->getName(),
 			"Your balance: " . $balance . "$",
 			$menuOptions,
-			$onSumbit,
-			null,
+			function(Player $player, int $selectedOption) : void{
+				$this->handleSelection($player, $selectedOption);
+			},
+			null
 		);
 		$this->player->sendForm($form);
 	}

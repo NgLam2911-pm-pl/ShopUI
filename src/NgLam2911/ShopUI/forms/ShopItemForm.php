@@ -33,7 +33,6 @@ readonly class ShopItemForm extends AsyncForm{
 			$this->player->sendMessage("Something went wrong...");
 			return;
 		}
-		$onSumbit = fn(Player $player, CustomFormResponse $response) => Await::g2c($this->handleResponse($player, $response));
 		$form = new CustomForm(
 			$this->shopItem->getItem()->getName(),
 			[
@@ -43,8 +42,12 @@ readonly class ShopItemForm extends AsyncForm{
 				new Toggle("option", "Buy/Sell", false),
 				new Input("amount", "Amount", "123456789")
 			],
-			$onSumbit,
-			fn($player) => $this->callback?->send()
+			function(Player $player, CustomFormResponse $response): void{
+				Await::g2c($this->handleResponse($player, $response));
+			},
+			function(Player $player): void{
+				$this->callback?->send();
+			}
 		);
 		$this->player->sendForm($form);
 	}
