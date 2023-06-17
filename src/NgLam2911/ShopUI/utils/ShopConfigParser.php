@@ -42,7 +42,7 @@ class ShopConfigParser{
 
 	private function parseCategory(array $data): Category{
 		if (isset($data["category"], $data["icon"], $data["items"])){
-			throw new InvalidArgumentException("Invalid category data at category {$data["name"]}");
+			throw new InvalidArgumentException("Invalid category data at category {$data["category"]}");
 		}
 		$category = new Category($data["category"], $data["icon"]);
 		foreach($data["items"] as $item){
