@@ -41,7 +41,7 @@ class ShopConfigParser{
 	}
 
 	private function parseCategory(array $data): Category{
-		if (isset($data["category"], $data["icon"], $data["items"])){
+		if (!isset($data["category"], $data["icon"], $data["items"])){
 			throw new InvalidArgumentException("Invalid category data at category {$data["category"]}");
 		}
 		$category = new Category($data["category"], $data["icon"]);
@@ -52,24 +52,24 @@ class ShopConfigParser{
 	}
 
 	private function parseShopItem(array $data): ShopItem{
-		if (isset($data["item"], $data["buy_price"], $data["sell_price"], $data["icon"])){
+		if (!isset($data["item"], $data["buy"], $data["sell"], $data["icon"])){
 			throw new InvalidArgumentException("Invalid shop item data at item {$data["item"]}");
 		}
 		$item = StringToItemParser::getInstance()->parse($data["item"]);
 		if (is_null($item)){
 			throw new InvalidArgumentException("Invalid item {$data["item"]}");
 		}
-		if (is_numeric($data["buy_price"])){
+		if (!is_numeric($data["buy"])){
 			throw new InvalidArgumentException("Invalid buy price {$data["buy_price"]} at item {$data["item"]}");
 		}
-		$buy_price = (float) $data["buy_price"];
+		$buy_price = (float) $data["buy"];
 		if ($buy_price < 0){
 			throw new InvalidArgumentException("Buy price must be greater than 0 at item {$data["item"]}");
 		}
-		if (is_numeric($data["sell_price"])){
+		if (!is_numeric($data["sell"])){
 			throw new InvalidArgumentException("Invalid sell price {$data["sell_price"]} at item {$data["item"]}");
 		}
-		$sell_price = (float) $data["sell_price"];
+		$sell_price = (float) $data["sell"];
 		if ($sell_price < 0){
 			throw new InvalidArgumentException("Sell price must be greater than 0 at item {$data["item"]}");
 		}
