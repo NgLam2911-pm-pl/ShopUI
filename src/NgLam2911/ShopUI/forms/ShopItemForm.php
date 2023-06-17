@@ -67,7 +67,7 @@ readonly class ShopItemForm extends AsyncForm{
 			$player->sendMessage("Amount must be greater than 0");
 			return;
 		}
-		if ($option){ //Buy
+		if (!$option){ //Buy
 			if ($player->getInventory()->canAddItem($this->shopItem->getItem()->setCount($amount)) === false){
 				$player->sendMessage("You dont have enough space in your inventory");
 				return;
