@@ -1,0 +1,15 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/NgLam2911-pm-pl/ShopUI
+build-by-default: true
+branches:
+- main
+projects:
+  ShopUI:
+    path: ""
+    libs:
+      - src: dktapps-pm-pl/pmforms/pmforms
+        version: ^2.1.0
+      - src: sof3/await-generator/await-generator
+        version: ^3.5.0
+      - src: NgLam2911-pm-pl/libasyneco/libasyneco
+        version: ^0.1
+...
